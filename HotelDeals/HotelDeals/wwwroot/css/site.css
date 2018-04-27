@@ -9,6 +9,7 @@ body {
     margin-left: 0px;
     font-style: normal;
     font-weight: 200;
+    padding-bottom: 10px;
 }
 /* Container */
 .container {
@@ -17,6 +18,11 @@ body {
     margin-right: auto;
     height: 1000px;
     background-color: #FFFFFF;
+    border-bottom: thin solid #646464;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    min-width: 420px;
+    display: inline-block;
 }
 /* Navigation */
 header {
@@ -30,18 +36,11 @@ header {
     color: #fff;
     font-weight: bold;
     text-align: undefined;
-    width: 10%;
+    width: 20%;
     float: left;
     margin-top: 15px;
     margin-left: 25px;
     letter-spacing: 4px;
-}
-
-nav {
-    float: right;
-    width: 50%;
-    text-align: right;
-    margin-right: 25px;
 }
 
 header nav ul {
@@ -69,20 +68,10 @@ ul li:hover a {
     color: #2C9AB7;
 }
 
-.hero_header {
-    color: #FFFFFF;
-    text-align: center;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    letter-spacing: 4px;
-}
-/* Hero Section */
-.hero {
+.top-section {
     background-color: #B3B3B3;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     /* [disabled]width: 0%; */
     overflow-x: visible;
 }
@@ -100,8 +89,8 @@ ul li:hover a {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-/* About Section */
-.text_column {
+
+.text-column {
     width: 29%;
     text-align: justify;
     font-weight: lighter;
@@ -112,33 +101,6 @@ ul li:hover a {
     color: #A3A3A3;
 }
 
-.about {
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 35px;
-    display: inline-block;
-    background-color: #FFFFFF;
-    margin-top: 0px;
-}
-/* Stats Gallery */
-.stats {
-    color: #717070;
-    margin-bottom: 5px;
-}
-
-.gallery {
-    clear: both;
-    display: inline-block;
-    width: 100%;
-    background-color: #FFFFFF;
-    /* [disabled]min-width: 400px;
-*/
-    padding-bottom: 35px;
-    padding-top: 0px;
-    margin-top: -5px;
-    margin-bottom: 0px;
-}
-
 .thumbnail {
     width: 25%;
     text-align: center;
@@ -146,41 +108,8 @@ ul li:hover a {
     margin-top: 35px;
 }
 
-.gallery .thumbnail h4 {
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    color: #52BAD5;
-}
 
-.gallery .thumbnail p {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    color: #A3A3A3;
-}
-/* Parallax Section */
-.banner {
-    background-color: #2D9AB7;
-    background-image: url(../images/parallax.png);
-    height: 400px;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.parallax {
-    color: #FFFFFF;
-    text-align: right;
-    padding-right: 100px;
-    padding-top: 110px;
-    letter-spacing: 2px;
-    margin-top: 0px;
-}
-
-.parallax_description {
+.parallax-description {
     color: #FFFFFF;
     text-align: right;
     padding-right: 100px;
@@ -199,19 +128,19 @@ footer {
     padding-bottom: 35px;
 }
 
-.footer_column {
+.footer-column {
     width: 50%;
     text-align: center;
     padding-top: 30px;
     float: left;
 }
 
-footer .footer_column h3 {
+footer .footer-column h3 {
     color: #B3B3B3;
     text-align: center;
 }
 
-footer .footer_column p {
+footer .footer-column p {
     color: #717070;
     background-color: #FFFFFF;
 }
@@ -223,7 +152,7 @@ footer .footer_column p {
     max-height: 200px;
 }
 
-footer .footer_column p {
+footer .footer-column p {
     padding-left: 30px;
     padding-right: 30px;
     text-align: justify;
@@ -272,7 +201,7 @@ footer .footer_column p {
     border-top-width: 2px;
 }
 
-.footer_banner {
+.footer-banner {
     background-color: #B3B3B3;
     padding-top: 60px;
     padding-bottom: 60PX;
@@ -288,6 +217,94 @@ footer {
 .hidden {
     display: none;
 }
+
+
+option:first {
+    color: darkgray;
+}
+
+.form-container {
+    overflow-x: auto;
+    width: 400px;
+    min-width: 400px;
+}
+
+#destination-filters {
+    width: 200px;
+}
+
+#length-of-stay-filter {
+    width: 150px;
+}
+
+.input-filters {
+    height: 30px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    clear: right;
+    padding-left: 2px;
+}
+
+#submit-filter {
+    clear: left;
+    width: 370px;
+    color: #FCF8F8;
+    background-color: #52BAD5;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: source-sans-pro;
+    font-size: 16px;
+    border-width: 0;
+}
+
+.form-label {
+    padding-top: 0px;
+    position: relative;
+    top: 5px;
+}
+
+select.input-filters {
+    width: 180px;
+}
+
+.date-filter {
+    width: 227px;
+}
+
+.offer-column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.hotel-image {
+    width: 150px;
+    padding-bottom: 0px;
+}
+
+.pricing-info {
+    width: 200px;
+}
+
+.average-price, .saving-perc {
+    font-size: large;
+    font-weight: bold;
+}
+
+.average-price {
+    color: #AF1574;
+}
+
+.hotel-rating {
+}
+
+.offer-container {
+    margin-bottom: 10px;
+    border-bottom: thin solid #B6B6B6;
+    width: 80%;
+}
+
 
 /* Mobile */
 @media (max-width: 320px) {
@@ -322,7 +339,7 @@ footer {
         text-align: center;
     }
 
-    .text_column {
+    .text-column {
         width: 100%;
         text-align: justify;
         padding-top: 0px;
@@ -335,7 +352,7 @@ footer {
         width: 100%;
     }
 
-    .footer_column {
+    .footer-column {
         width: 100%;
         margin-top: 0px;
     }
@@ -354,7 +371,7 @@ footer {
         font-size: 18px;
     }
 
-    .parallax_description {
+    .parallax-description {
         padding-top: 0px;
         padding-right: 0px;
         padding-bottom: 0px;
@@ -378,7 +395,7 @@ footer {
         line-height: 22px;
     }
 
-    .hero_header {
+    .hero-header {
         padding-left: 10px;
         padding-right: 10px;
         line-height: 22px;
@@ -426,7 +443,7 @@ footer {
         padding-bottom: 8px;
     }
 
-    .text_column {
+    .text-column {
         width: 100%;
         text-align: left;
         padding-top: 0px;
@@ -439,7 +456,7 @@ footer {
         width: 100%;
     }
 
-    .footer_column {
+    .footer-column {
         width: 100%;
         margin-top: 0px;
     }
@@ -458,7 +475,7 @@ footer {
         font-size: 18px;
     }
 
-    .parallax_description {
+    .parallax-description {
         padding-top: 0px;
         padding-right: 0px;
         padding-bottom: 0px;
@@ -487,7 +504,7 @@ footer {
         padding-top: 20%;
     }
 
-    .parallax_description {
+    .parallax-description {
         margin-top: 0px;
         margin-right: 0px;
         margin-bottom: 0px;
@@ -501,14 +518,14 @@ footer {
         padding-right: 20px;
     }
 
-    .footer_column {
+    .footer-column {
         width: 100%;
     }
 }
 
 /* Small Desktops */
 @media (min-width: 768px) and (max-width: 1096px) {
-    .text_column {
+    .text-column {
         width: 100%;
     }
 
@@ -516,7 +533,7 @@ footer {
         width: 50%;
     }
 
-    .text_column {
+    .text-column {
         width: 100%;
         margin-top: 0px;
         margin-right: 0px;
@@ -528,82 +545,4 @@ footer {
         padding-left: 0px;
     }
 
-    .banner {
-        margin-top: 0px;
-        padding-top: 0px;
-    }
-}
-
-option:first {
-    color: darkgray;
-}
-
-.form_container {
-    overflow-x: auto;
-    width: 400px;
-}
-
-#destination_filters {
-    width: 200px;
-}
-
-#length_of_stay_filter {
-    width: 150px;
-}
-
-.input_filters {
-    height: 30px;
-    float: left;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    clear: right;
-    padding-left: 2px;
-}
-
-#submit_filter {
-    clear: left;
-    width: 370px;
-    color: #FCF8F8;
-    background-color: #348CB0;
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-family: source-sans-pro;
-    font-size: 16px;
-    border-width: 0;
-}
-
-.form_label {
-    padding-top: 0px;
-    position: relative;
-    top: 5px;
-}
-
-select.input_filters {
-    width: 180px;
-}
-
-.date_filter {
-    width: 227px;
-}
-
-.offer_column {
-    float: left;
-    width: 150px;
-    height: 150px;
-    margin-left: 10px;
-    background-color: indianred;
-}
-
-.hotel_info {
-    width: 250px;
-}
-
-.hotel_name {
-}
-
-.offer_container {
-    overflow: auto;
-    width: 70%;
-    padding-bottom: 10px;
 }

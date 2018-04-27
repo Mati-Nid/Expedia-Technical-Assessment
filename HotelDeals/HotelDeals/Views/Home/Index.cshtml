@@ -1,3 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<section class="top-section">
+    <center>
+        <div class="form-container">
+            <form>
+                <input class="input-filters" id="destination-filters" type="text" placeholder="Destination City">
+                <input class="input-filters" id="length-of-stay-filter" type="text" placeholder="Length Of Stay">
+                <label class="input-filters form-label">Minimum Start Date</label> <input class="input-filters date-filter" type="date">
+                <label class="input-filters form-label">Maximum Start Date</label> <input class="input-filters date-filter" type="date">
+                <select class="input-filters">
+                    <option value="" disabled selected hidden>Minimum Star Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <select class="input-filters">
+                    <option value="" disabled selected hidden>Minimum Star Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input class="input-filters" id="submit-filter" type="submit" value="Search">
+            </form>
+        </div>
+    </center>
+</section>
+<section class="offers" id="contact">
+    <center>
+        <div class="offer-container">
+            <h3>Ocean Reserve OceanView Sunny Isles Luxury Condos</h3>
+            <div class="hotel-image offer-column">
+                <img src="" width="148" height="99" alt="" />
+                <br /><div class="hotel-rating"><i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+            </div>
+            <div class="pricing-info offer-column">
+                <div class="average-price">167.48 USD</div>
+                <div class="saving-perc">saving 75%</div>
+                <br />
+                <div class="trip-dates">dd/mm/yyyy - dd/mm/yyyy</div>
+            </div>
+            <div class="hotel-info offer-column">
+                Miami (and vicinity), Florida, United States of America
+                <br />
+                Sunny Isles Beach
+                <br />
+                19370-19390 Collins Avenue
+                <br />
+
+            </div>
+        </div>
+    </center>
+</section>
