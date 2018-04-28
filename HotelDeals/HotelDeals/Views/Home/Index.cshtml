@@ -8,7 +8,7 @@
     <center>
         <div class="form-container">
             <form action="" method="get" name="filters-form">
-                <input class="form-reset" type="reset">
+                @*<input class="form-reset" type="reset">*@
                 <input class="input-filters" id="destination-filters" type="text" placeholder="Destination City" name="destinationCity"
                        value="@Html.DisplayFor(filterParam => Model.Filters.DestinationCity)">
                 <input class="input-filters" id="length-of-stay-filter" type="number" placeholder="Length Of Stay" name="lengthOfStay"
@@ -17,21 +17,55 @@
                 <input class="input-filters date-filter" type="date" name="minTripStartDate" value="@Html.DisplayFor(filterParam => Model.Filters.MinStartDate)">
                 <label class="input-filters form-label">Maximum Start Date</label>
                 <input class="input-filters date-filter" type="date" name="maxTripStartDate" value="@Html.DisplayFor(filterParam => Model.Filters.MaxStartDate)">
-                <select class="input-filters" name="minStarRating" selected="@Html.DisplayFor(filterParam => Model.Filters.MinStarRating)">
-                    <option class="first-option" disabled selected hidden>Minimum Star Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                <label class="input-filters form-label">Minimum Star Rating</label>
+                <select class="input-filters" name="minStarRating">
+                    @if (Model.Filters.MinStarRating == 0)
+                    {
+                        <option class="first-option" selected></option>
+                    }
+                    else
+                    {
+                        <option class="first-option"></option>
+
+                    }
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        if (i == Model.Filters.MinStarRating)
+                        {
+                            <option value=@i selected>@i</option>
+
+                        }
+                        else
+                        {
+
+                            <option value=@i>@i</option>
+                        }
+                    }
                 </select>
-                <select class="input-filters" name="maxStarRating" selected="@Html.DisplayFor(filterParam => Model.Filters.MaxStarRating)">
-                    <option class="first-option" disabled selected hidden>Maximum Star Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                <label class="input-filters form-label">Maximum Star Rating</label>
+                <select class="input-filters" name="maxStarRating">
+                    @if (Model.Filters.MaxStarRating == 0)
+                    {
+                        <option class="first-option" selected></option>
+                    }
+                    else
+                    {
+                        <option class="first-option"></option>
+
+                    }
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        if (i == Model.Filters.MaxStarRating)
+                        {
+                        <option value=@i selected>@i</option>
+
+                        }
+                        else
+                        {
+
+                        <option value=@i>@i</option>
+                        }
+                    }
                 </select>
                 <input class="input-filters" id="submit-filter" type="submit" value="Search">
             </form>

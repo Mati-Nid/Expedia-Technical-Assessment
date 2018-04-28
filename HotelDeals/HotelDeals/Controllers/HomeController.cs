@@ -32,7 +32,8 @@ namespace HotelDeals.Controllers
                         }else if (key.Equals("lengthOfStay"))
                         {
                             filters.LengthOfStay = value;
-                        }else if (key.Equals("minTripStartDate"))
+                        }
+                        else if (key.Equals("minTripStartDate"))
                         {
                             filters.MinStartDate = value;
                         }else if (key.Equals("maxTripStartDate"))
@@ -40,10 +41,11 @@ namespace HotelDeals.Controllers
                             filters.MaxStartDate = value;
                         }else if (key.Equals("minStarRating"))
                         {
-                            filters.MinStarRating = value;
-                        }else if (key.Equals("maxStarRating"))
+                            filters.MinStarRating = int.Parse(value);
+                        }
+                        else if (key.Equals("maxStarRating"))
                         {
-                            filters.MaxStarRating = value;
+                            filters.MaxStarRating = int.Parse(value);
                         }
                     }
                 }

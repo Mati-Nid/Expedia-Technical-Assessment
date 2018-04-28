@@ -16,9 +16,9 @@ namespace HotelDeals.Models
 
         public string MaxStartDate { get; set; }
 
-        public string MinStarRating { get; set; }
+        public int MinStarRating { get; set; }
 
-        public string MaxStarRating { get; set; }
+        public int MaxStarRating { get; set; }
     }
 
     public partial class HotelDealsModel
