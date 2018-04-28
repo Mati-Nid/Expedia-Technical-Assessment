@@ -6,6 +6,21 @@ using Newtonsoft.Json.Converters;
 namespace HotelDeals.Models
 {
 
+    public class Filters
+    {
+        public string DestinationCity { get; set; }
+        
+        public string LengthOfStay { get; set; }
+
+        public string MinStartDate { get; set; }
+
+        public string MaxStartDate { get; set; }
+
+        public string MinStarRating { get; set; }
+
+        public string MaxStarRating { get; set; }
+    }
+
     public partial class HotelDealsModel
     {
         [JsonProperty("offerInfo")]
@@ -16,6 +31,8 @@ namespace HotelDeals.Models
 
         [JsonProperty("offers")]
         public Offers Offers { get; set; }
+
+        public Filters Filters { get; set; }
 
     }
 
@@ -38,6 +55,11 @@ namespace HotelDeals.Models
     {
         [JsonProperty("Hotel")]
         public List<Hotel> Hotel { get; set; }
+
+        public Offers()
+        {
+            Hotel = new List<Hotel>();
+        }
     }
 
     public partial class Hotel
@@ -195,7 +217,7 @@ namespace HotelDeals.Models
             {
                 if (TravelStartDate.Count < 3)
                     return string.Empty;
-                return string.Format("{0}-{1}-{2}", TravelStartDate[2], TravelStartDate[1], TravelStartDate[0]);
+                return string.Format("{0}/{1}/{2}", TravelStartDate[2], TravelStartDate[1], TravelStartDate[0]);
             }
         }
 
@@ -205,7 +227,7 @@ namespace HotelDeals.Models
             {
                 if (TravelEndDate.Count < 3)
                     return string.Empty;
-                return string.Format("{0}-{1}-{2}", TravelEndDate[2], TravelEndDate[1], TravelEndDate[0]);
+                return string.Format("{0}/{1}/{2}", TravelEndDate[2], TravelEndDate[1], TravelEndDate[0]);
             }
         }
     }

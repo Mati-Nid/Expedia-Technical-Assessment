@@ -1,25 +1,32 @@
-﻿@{
+﻿@model HotelDealsModel;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <section class="top-section">
     <center>
         <div class="form-container">
-            <form>
-                <input class="input-filters" id="destination-filters" type="text" placeholder="Destination City">
-                <input class="input-filters" id="length-of-stay-filter" type="text" placeholder="Length Of Stay">
-                <label class="input-filters form-label">Minimum Start Date</label> <input class="input-filters date-filter" type="date">
-                <label class="input-filters form-label">Maximum Start Date</label> <input class="input-filters date-filter" type="date">
-                <select class="input-filters">
-                    <option value="" disabled selected hidden>Minimum Star Rating</option>
+            <form action="" method="get" name="filters-form">
+                <input class="form-reset" type="reset">
+                <input class="input-filters" id="destination-filters" type="text" placeholder="Destination City" name="destinationCity"
+                       value="@Html.DisplayFor(filterParam => Model.Filters.DestinationCity)">
+                <input class="input-filters" id="length-of-stay-filter" type="text" placeholder="Length Of Stay" name="lengthOfStay"
+                       value="@Html.DisplayFor(filterParam => Model.Filters.LengthOfStay)">
+                <label class="input-filters form-label">Minimum Start Date</label>
+                <input class="input-filters date-filter" type="date" name="minTripStartDate" value="@Html.DisplayFor(filterParam => Model.Filters.MinStartDate)">
+                <label class="input-filters form-label">Maximum Start Date</label>
+                <input class="input-filters date-filter" type="date" name="maxTripStartDate" value="@Html.DisplayFor(filterParam => Model.Filters.MaxStartDate)">
+                <select class="input-filters" name="minStarRating" value="@Html.DisplayFor(filterParam => Model.Filters.MinStarRating)">
+                    <option class="first-option" disabled selected hidden>Minimum Star Rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <select class="input-filters">
-                    <option value="" disabled selected hidden>Minimum Star Rating</option>
+                <select class="input-filters" nam="maxStarRating" value="@Html.DisplayFor(filterParam => Model.Filters.MaxStarRating)">
+                    <option class="first-option" disabled selected hidden>Maximum Star Rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -33,27 +40,31 @@
 </section>
 <section class="offers" id="contact">
     <center>
+
+        @foreach (var offer in Model.Offers.Hotel) {
+
         <div class="offer-container">
-            <h3>Ocean Reserve OceanView Sunny Isles Luxury Condos</h3>
+            <h3>@Html.DisplayFor(modelItem => offer.HotelInfo.HotelName)</h3>
             <div class="hotel-image offer-column">
-                <img src="" width="148" height="99" alt="" />
+                <img src="@Html.DisplayFor(modelItem => offer.HotelInfo.HotelImageUrl)" width="148" height="99" alt="" />
                 <br /><div class="hotel-rating"><i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
             </div>
             <div class="pricing-info offer-column">
-                <div class="average-price">167.48 USD</div>
-                <div class="saving-perc">saving 75%</div>
+                <div class="average-price">@Html.DisplayFor(modelItem => offer.HotelPricingInfo.AveragePriceValue) @Html.DisplayFor(modelItem => offer.HotelPricingInfo.Currency)</div>
+                <div class="saving-perc">Saving @Html.DisplayFor(modelItem => offer.HotelPricingInfo.PercentSavings)%</div>
                 <br />
-                <div class="trip-dates">dd/mm/yyyy - dd/mm/yyyy</div>
+                <div class="trip-dates">@Html.DisplayFor(modelItem => offer.OfferDateRange.TravelStartDateStirng) - @Html.DisplayFor(modelItem => offer.OfferDateRange.TravelEndDateStirng)</div>
             </div>
             <div class="hotel-info offer-column">
-                Miami (and vicinity), Florida, United States of America
+                @Html.DisplayFor(modelItem => offer.Destination.LongName)
                 <br />
-                Sunny Isles Beach
+                @Html.DisplayFor(modelItem => offer.HotelInfo.HotelCity)
                 <br />
-                19370-19390 Collins Avenue
+                @Html.DisplayFor(modelItem => offer.HotelInfo.HotelStreetAddress)
                 <br />
-
             </div>
         </div>
+
+        }
     </center>
 </section>
