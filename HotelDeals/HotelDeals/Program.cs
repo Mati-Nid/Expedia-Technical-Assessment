@@ -43,7 +43,10 @@ namespace HotelDeals
                     logging.ClearProviders();
                     logging.SetMinimumLevel(LogLevel.Trace);
                 })
-                .UseNLog()  // NLog: setup NLog for Dependency injection
+                .UseNLog() // NLog: setup NLog for Dependency injection
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .Build();
     }
 }

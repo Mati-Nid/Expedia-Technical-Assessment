@@ -22,6 +22,11 @@ namespace HotelDeals
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
