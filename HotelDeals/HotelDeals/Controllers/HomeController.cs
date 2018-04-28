@@ -20,6 +20,7 @@ namespace HotelDeals.Controllers
 
             Filters filters = new Filters();
 
+            //loop throght parameters sent by the filters form, only add parameters with none empty values to expedia's url
             foreach (var param in Request.Query.Keys)
             {
                 var key = param;
@@ -30,6 +31,7 @@ namespace HotelDeals.Controllers
                     {
                         urlBuilder.AppendFormat("&{0}={1}", key, value);
 
+                        //fill the filters objects in the view model to be reset form inputs
                         if (key.Equals("destinationCity"))
                         {
                             filters.DestinationCity = value;
@@ -70,7 +72,6 @@ namespace HotelDeals.Controllers
 
             using (var webClient = new WebClient())
             {
-                //sync request
                 var jsonString = webClient.DownloadString(url);
 
                 var hotelDealsModel = HotelDealsModel.FromJson(jsonString);
