@@ -151,6 +151,19 @@ namespace HotelDeals.Models
         [JsonProperty("hotelStarRating")]
         public string HotelStarRating { get; set; }
 
+        public double HotelStartRatingNum
+        {
+            get
+            {
+                double rating;
+                if (double.TryParse(HotelStarRating, out rating))
+                {
+                    return rating;
+                }
+                return 0;
+            }
+        }
+
         [JsonProperty("hotelGuestReviewRating")]
         public double HotelGuestReviewRating { get; set; }
 
