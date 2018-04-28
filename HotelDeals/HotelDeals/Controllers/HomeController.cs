@@ -2,50 +2,65 @@
 using HotelDeals.Models;
 using System.Net;
 using System.Text;
+using Microsoft.AspNetCore.Diagnostics;
+using System;
+using NLog;
 
 namespace HotelDeals.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         public IActionResult Index()
         {
-
             var urlBuilder = new StringBuilder();
 
             urlBuilder.Append("https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel");
 
             Filters filters = new Filters();
 
-            foreach(var param in Request.Query.Keys)
+            foreach (var param in Request.Query.Keys)
             {
                 var key = param;
                 Microsoft.Extensions.Primitives.StringValues value;
-                if(Request.Query.TryGetValue(key, out value))
+                if (Request.Query.TryGetValue(key, out value))
                 {
                     if (!string.IsNullOrEmpty(value))
                     {
-                        urlBuilder.AppendFormat("&{0}={1}",key,value);
+                        urlBuilder.AppendFormat("&{0}={1}", key, value);
 
                         if (key.Equals("destinationCity"))
                         {
                             filters.DestinationCity = value;
-                        }else if (key.Equals("lengthOfStay"))
+                        }
+                        else if (key.Equals("lengthOfStay"))
                         {
                             filters.LengthOfStay = value;
                         }
                         else if (key.Equals("minTripStartDate"))
                         {
                             filters.MinStartDate = value;
-                        }else if (key.Equals("maxTripStartDate"))
+                        }
+                        else if (key.Equals("maxTripStartDate"))
                         {
                             filters.MaxStartDate = value;
-                        }else if (key.Equals("minStarRating"))
+                        }
+                        else if (key.Equals("minStarRating"))
                         {
-                            filters.MinStarRating = int.Parse(value);
+                            int intValue;
+                            if (int.TryParse(value, out intValue))
+                            {
+                                filters.MinStarRating = intValue;
+                            }
                         }
                         else if (key.Equals("maxStarRating"))
                         {
-                            filters.MaxStarRating = int.Parse(value);
+                            int intValue;
+                            if (int.TryParse(value, out intValue))
+                            {
+                                filters.MaxStarRating = intValue;
+                            }
                         }
                     }
                 }
@@ -63,6 +78,26 @@ namespace HotelDeals.Controllers
 
                 return View(hotelDealsModel);
             }
+        }
+
+        public IActionResult Error()
+        {
+            /* A global error handling is being used instead of a try-catch approach
+             * in the occurrence of an exception, the application is redirected to this action,
+             * the exception will be logged in a file and a generic error view will be shown the user
+             */
+
+            var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if (exceptionFeature != null)
+            {
+                // Get the exception that occurred
+                Exception exceptionThatOccurred = exceptionFeature.Error;
+
+                Logger.Error(exceptionThatOccurred, exceptionThatOccurred.Message);
+            }
+
+            return View();
         }
     }
 }
